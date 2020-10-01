@@ -20,7 +20,7 @@ public class CreditCalc implements ICreditCalc {
     }
 
     @Override
-    public double overpayment(Credit credit) {
-        return Math.round(monthlyPayment(credit) * (credit.getMonths() - credit.getTotalAmount()));
+    public int overpayment(Credit credit) {
+        return monthlyPayment(credit) * credit.getMonths() - credit.getTotalAmount();
     }
 }
