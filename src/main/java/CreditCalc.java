@@ -1,6 +1,4 @@
-import java.math.BigDecimal;
-
-public class CreditCalc implements ICreditCalc{
+public class CreditCalc implements ICreditCalc {
     private final Credit credit;
 
     public CreditCalc(Credit credit) {
@@ -9,17 +7,20 @@ public class CreditCalc implements ICreditCalc{
 
 
     @Override
-    public BigDecimal monthlyPayment(Credit credit) {
-        return null;
+    public int monthlyPayment(Credit credit) {
+        double k = credit.getPercent() / 12 / 100;
+        return (int) Math.round(credit.getTotalAmount() *
+                (k * (Math.pow(1 + k, 12)) /
+                        ((Math.pow(1 + k, 12) - 1))));
     }
 
     @Override
-    public BigDecimal totalAmountPlusPercent(Credit credit) {
-        return null;
+    public double totalAmountPlusPercent(Credit credit) {
+        return overpayment(credit) + (credit.getTotalAmount());
     }
 
     @Override
-    public BigDecimal overpayment(Credit credit) {
-        return null;
+    public double overpayment(Credit credit) {
+        return Math.round(monthlyPayment(credit) * (credit.getMonths() - credit.getTotalAmount()));
     }
 }

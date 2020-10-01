@@ -1,9 +1,9 @@
 public class Credit {
-    private Double totalAmount;
+    private int totalAmount;
     private int months;
     private double percent;
 
-    public Credit(Double totalAmount, int months, double percent) {
+    public Credit(int totalAmount, int months, double percent) {
         this.totalAmount = totalAmount;
         this.months = months;
         this.percent = percent;
@@ -13,11 +13,11 @@ public class Credit {
 
     }
 
-    public Double getTotalAmount() {
+    public int getTotalAmount() {
         return totalAmount;
     }
 
-    public void setTotalAmount(Double totalAmount) {
+    public void setTotalAmount(int totalAmount) {
         this.totalAmount = totalAmount;
     }
 
